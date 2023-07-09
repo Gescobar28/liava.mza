@@ -1,0 +1,5 @@
+.imgBrands{
+    width: 60%;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}

@@ -1,0 +1,12 @@
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+footer {
+    bottom: 0;
+    min-height: 70px;
+}
+
+h5{
+    font-weight: bold;
+}

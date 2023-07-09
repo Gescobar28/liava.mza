@@ -1,0 +1,84 @@
+/* .bg-dark{
+    background-color: var(--second-color) !important;
+} */
+
+
+a{
+    color: black !important;
+}
+
+.bg-body{
+    background-color: rgb(255, 255, 255) !important;
+}
+
+.bg-form{
+    background-color: grey;
+}
+
+.btn-outline-light{
+  --bs-btn-color: rgb(255, 255, 255);
+  --bs-btn-border-color: grey;
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: rgb(209, 201, 201);
+  --bs-btn-hover-border-color: transparent;
+}
+
+.btn-outline-success{
+    color: var(--third-color);
+    border-color: var(--third--color)
+}
+
+.btn-outline-success:hover{
+    color: var(--bg-color);
+    border-color: transparent;
+    background-color: var(--first-alpha-color);
+    transition: all 0.3s ease-out
+}
+
+
+.form-control{
+    background-color: grey;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+}
+
+.nav-item:hover{
+    /* background-color: var(--third-color); */
+    transition: all 0.3s ease-out;
+}
+
+.nav-link{
+    color: var(--bg-color);
+    /* font-size: 1.15rem; */
+}
+
+.text-light{
+  color: white !important;
+  font-size: 2rem;
+  margin: 10px;
+}
+
+
+@media (min-width: 576px) { 
+  .text-light{
+    margin: 10px;
+    left: 52px;
+  }
+ }
+
+@media (min-width: 768px) { }
+
+@media (min-width: 992px) { 
+  .form-control{
+    background-color: grey;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    width: 500px;
+}
+ }
+
+@media (min-width: 1200px) { 
+  
+ }

@@ -1,0 +1,8 @@
+article div i{
+    font-size: 2rem;
+}
+
+section article small{
+    font-size: 0.8rem;
+    color: grey;
+}

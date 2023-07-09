@@ -1,4 +1,41 @@
+/* ********** Custom Properties ******** */
+
+:root{
+  --first-color:rgb(207,191,91);
+  --first-alpha-color:rgb(207,191,91,0.75);
+
+  --second-color:rgb(83,65,84);
+  --second-alpha-color:rgb(83,65,84,0.75);
+
+  --third-color: rgb(91,36,179);
+  --third-alpha-color: rgb(91,36,179,0.75);
+
+  --link-color: rgb(218,0,235);
+  --link-alpha-color: rgb(218,0,235,0.75);
+  
+  --bg-color:rgb(255, 255, 255);
+  --bg--alpha-color:rgba(230, 230, 10, 0.5);
+}
+
+/* ********** Reset Styles ******** */
+
+body{
+  font-family: 'Poppins', sans-serif;
+  background-color:rgb(247, 247, 247); 
+
+  /* background-image: linear-gradient(to right top, rgb(207,191,91,0.75)); */
+}
+
+/* ********** Bootstrap Styles ******** */
+
+
+
+/* ********** My Styles ******** */
+
+
+
 .App {
+  font-family: 'Poppins', sans-serif;
   text-align: center;
 }
 
