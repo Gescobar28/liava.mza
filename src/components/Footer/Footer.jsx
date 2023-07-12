@@ -3,7 +3,7 @@ import "./Footer.css";
 
 export default function Footer() {
   return (
-    <div className="d-flex justify-content-center w-100 bg-light border!important mb-0">
+    <div className="d-flex justify-content-center w-100 bg-white mb-0">
       <footer className="container row d-flex justify-content-evenly py-3 text-dark">
         <section className="row col-lg-3">
           <h5>Ayuda</h5>
@@ -25,6 +25,25 @@ export default function Footer() {
         </section>
         <section className="row col-lg-3">
           <h5>Suscribirse</h5>
+          <p className="">
+        <small>
+          Registráte con tu correo para recibir todas las novedades!
+        </small>
+      </p>
+      <div class="mb-3 d-flex">
+        <label for="exampleFormControlInput1" class="form-label"></label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="nombre@correo.com"
+        />
+        <div class="">
+          <button class="btn btn-primary" type="submit">
+            Registrarse
+          </button>
+        </div>
+      </div>
           {/* <a href="/">Métodos de envío</a>
           <a href="/">Costos de envío</a>
           <a href="/">Seguimiento de envíos</a> */}

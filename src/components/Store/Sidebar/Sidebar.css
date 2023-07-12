@@ -1,0 +1,27 @@
+.offcanvas, .offcanvas-xxl, .offcanvas-xl, .offcanvas-lg, .offcanvas-md, .offcanvas-sm {
+  --bs-offcanvas-width: 200px;
+}
+/* 
+p{
+  font-weight: bold;
+} */
+
+
+.form-check-input:checked {
+  background-color:var(--first-color);
+  border-color: var(--first-color);
+}
+
+.form-check-input:focus {
+  border-color: var(--first-color);
+  outline: 0;
+  box-shadow: 0 0 0 0;
+}
+
+a i{
+  font-size: 1.2rem;
+}
+
+/* a{
+  font-size: 1rem;
+} */

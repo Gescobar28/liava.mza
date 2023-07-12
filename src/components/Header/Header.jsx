@@ -52,13 +52,13 @@ export default function Header() {
           </div>
         </div>
       </nav>
-      <nav class="navbar navbar-expand-lg bg-body py-lg-1">
+      <nav class="navbar navbar-expand-lg bg-body py-0">
         <div class="container ">
           <div
             class="collapse navbar-collapse  justify-content-lg-center"
             id="navbarSupportedContent"
           >
-            <ul className="navbar-nav  mb-2 mb-lg-0">
+            <ul className="navbar-nav mb-0">
               <li className="nav-item">
                 <a className="nav-link" aria-current="page" href="/">
                   Home

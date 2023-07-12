@@ -1,0 +1,13 @@
+.inputText{
+    width: 2.2rem;
+    text-align: end;
+    height: 2.3rem;
+    border: none;
+}
+
+
+button span{
+    font-size: 1rem;
+    color: rgb(0, 0, 0);
+    font-weight:300;
+}
