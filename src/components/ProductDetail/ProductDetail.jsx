@@ -1,37 +1,49 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ProductDetail.css";
 import ItemCount from "../ItemCount/ItemCount";
 import Similar from "./Similar/Similar";
+import { getProducts, getProductById } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 export default function ProductDetail() {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [dispatch]);
+
+
+  useEffect(() => {
+    dispatch(getProductById(id));
+  }, [dispatch]);
+
+  const product = useSelector((state) => state.productDetail);
+
+  const listProducts = useSelector((state) => state.products);
+
+  const productSelect = listProducts.filter((el) => el.name === product.name);
+
   return (
     <div>
       <div className="col d-md-flex container border bg-white my-sm-5">
         <div className="col container py-5 d-flex justify-content-center">
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwnnF2Se6w0a41puyCPwRrpe3JhvA36mdDI8pC_NdIvr2-he1N5Rpqt1G8fhIBv7HYBl4"
-            alt=".."
-          />
+          <img src={product.image} alt=".." className="img-fluid"/>
         </div>
         <div className="col container py-5">
-          <h4>Remera de Jirafa</h4>
-          <p className="my-0">$4.500</p>
-          <small>3 cuotas sin interes de $1.500</small>
-          <p className="text-secondary my-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
-            tempora sit maiores quaerat tenetur, quasi possimus iste est, fugiat
-            ut doloribus delectus quidem quisquam minus repellat ducimus
-            assumenda amet provident.
-          </p>
-          <span>Talle:</span>
+          <h4>{product.name}</h4>
+          <p className="my-0">${product.price}</p>
+          <small>3 cuotas sin interes de ${product.price / 3}</small>
+          <p className="text-secondary my-4">{product.detail}</p>
+          <span>Talle: </span>
           <select className="ms-4">
-            <option>S</option>
-            <option>M</option>
-            <option>L</option>
-            <option>XL</option>
+            {productSelect.map((el) => (
+              <option>{el.size}</option>
+            ))}
           </select>
           <span className="d-block text-secondary my-2">
-            <small>Disponibles 2 unidades</small>
+            <small>Disponibles {product.stock} unidades</small>
           </span>
           <ItemCount />
           <div className="d-flex justify-content-center">
@@ -48,7 +60,9 @@ export default function ProductDetail() {
           </p>
         </div>
       </div>
-      <Similar />
+      <Similar 
+        productDetail = {product}
+      />
     </div>
   );
 }
