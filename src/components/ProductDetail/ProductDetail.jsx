@@ -2,13 +2,16 @@ import React, { useEffect } from "react";
 import "./ProductDetail.css";
 import ItemCount from "../ItemCount/ItemCount";
 import Similar from "./Similar/Similar";
-import { getProducts, getProductById } from "../../redux/actions";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getProductById, getProducts } from "../../redux/action/actionsProducts";
 
 export default function ProductDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const state = useSelector(state => state);
+  const { product, listProducts } = state.productReducer;
 
   useEffect(() => {
     dispatch(getProducts());
@@ -19,9 +22,6 @@ export default function ProductDetail() {
     dispatch(getProductById(id));
   }, [dispatch]);
 
-  const product = useSelector((state) => state.productDetail);
-
-  const listProducts = useSelector((state) => state.products);
 
   const productSelect = listProducts.filter((el) => el.name === product.name);
 

@@ -29,9 +29,13 @@
 } */
 
 
-.cardHeight{
+/* .carouselHeight{
+height: 50px;
+ } */
+ .cardHeight{
     display: -webkit-flex;
     display: flex;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
  }
+ 

@@ -1,31 +1,33 @@
 import {
-  FILTER_BY_CATEGORY,
+  FILTER_BY_GENRE,
   FILTER_BY_SEASON,
+  FILTER_BY_TYPE,
   GET_PRODUCT,
   GET_PRODUCT_ID,
   ORDER_BY_PRICE_ASC,
   ORDER_BY_PRICE_DESC,
   REMOVE_FILTER_GENRE,
-} from "./actions";
+  REMOVE_FILTER_TYPE,
+} from "../type";
 
 const initialState = {
   products: [],
   allProducts: [],
   productsFiltered: [],
   productDetail: [],
-  // detail: [],
   // categories: [],
   // brands: [],
   // cart: [],
 };
 
-const rootReducer = (state = initialState, action) => {
+const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_PRODUCT:
       return {
         ...state,
         products: action.payload,
         allProducts: action.payload,
+        productsFiltered: [],
       };
     case GET_PRODUCT_ID:
       return {
@@ -70,22 +72,29 @@ const rootReducer = (state = initialState, action) => {
         products: orderByPriceDesc,
       };
     case FILTER_BY_SEASON:
-      const allProducts = state.allProducts;
-      const season = allProducts.filter((e) => e.season === action.payload);
-
       return {
         ...state,
-        products: season,
+        products: action.payload,
+        allProducts: action.payload,
+        productsFiltered: [],
       };
 
-    case FILTER_BY_CATEGORY:
-      const allProducts1 = state.allProducts;
+    case FILTER_BY_GENRE:
+      const allProducts1 = state.products;
       const category = allProducts1.filter((e) => e.genre === action.payload);
       const productsFiltered = state.productsFiltered;
-
       return {
         ...state,
-        productsFiltered: productsFiltered.concat(category),
+        productsFiltered: productsFiltered.concat(category), //condicional
+      };
+
+    case FILTER_BY_TYPE:
+      const allProducts2 = state.products;
+      const type = allProducts2.filter((e) => e.category === action.payload);
+      const productsFiltered6 = state.productsFiltered;
+      return {
+        ...state,
+        productsFiltered: productsFiltered6.concat(type), //condicional
       };
     case REMOVE_FILTER_GENRE:
       const productsFiltered2 = state.productsFiltered;
@@ -98,10 +107,21 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         productsFiltered: newFiltered,
       };
+    case REMOVE_FILTER_TYPE:
+      const productsFiltered5 = state.productsFiltered;
+
+      const newFiltered1 = productsFiltered5.filter(
+        (e) => e.category !== action.payload
+      );
+
+      return {
+        ...state,
+        productsFiltered: newFiltered1,
+      };
     default: {
       return state;
     }
   }
 };
 
-export default rootReducer;
+export default productReducer;

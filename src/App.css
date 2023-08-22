@@ -21,14 +21,30 @@
 
 body{
   font-family: 'Poppins', sans-serif;
-  background-color:rgb(247, 247, 247); 
+  /* background-color:rgb(247, 247, 247);  */
+  /*
+* Created with https://www.css-gradient.com
+* Gradient link: https://www.css-gradient.com/?c1=ffe4a1&c2=ffe7e6&gt=l&gd=dtl
+*/
+background: #FFE4A1;
+background: linear-gradient(135deg, #fff7e4, #FFE7E6);
+
 
   /* background-image: linear-gradient(to right top, rgb(207,191,91,0.75)); */
 }
 
 /* ********** Bootstrap Styles ******** */
 
-
+.dropdown-toggle::after {
+  display: inline-block;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0em solid;
+  border-right: 0em solid transparent;
+  border-bottom: 0;
+  border-left: 0em solid transparent;
+}
 
 /* ********** My Styles ******** */
 

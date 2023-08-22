@@ -3,20 +3,19 @@ import "./Products.css";
 import Sidebar from "../Sidebar/Sidebar";
 import Card from "../../Card/Card";
 import { useDispatch, useSelector } from "react-redux";
+import Pagination from "../Pagination/Pagination";
 import {
-  orderByPrice,
   orderByPriceAsc,
   orderByPriceDesc,
-} from "../../../redux/actions";
-import Pagination from "../Pagination/Pagination";
+} from "../../../redux/action/actionsProducts";
 
 export default function Products() {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
-  const productsFiltered = useSelector((state) => state.productsFiltered);
-  const [orderPage, setOrderPage] = useState();
+  const state = useSelector(state => state);
+  const { products, productsFiltered } = state.productReducer;
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(15);
+  const [orderPage, setOrderPage] = useState();
+  const [productsPerPage, setProductsPerPage] = useState(10);
   const numLastProduct = productsPerPage * currentPage;
   const numFirstProduct = numLastProduct - productsPerPage;
   const currentProducts = products.slice(numFirstProduct, numLastProduct);
@@ -48,16 +47,29 @@ export default function Products() {
       <div className="d-flex pt-5">
         <div className="col d-flex pe-2 justify-content-center justify-content-md-end mb-5 mb-lg-0">
           <div className="">
-            <Sidebar />
+            <Sidebar
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
           </div>
           <div
-            class="d-flex w-80 border btn ms-2 btn"
+            class="d-flex w-80 border btn ms-2"
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
             <p className="me-2 mb-0">Ordenar</p>
-            <i class="bi bi-arrow-down-up "></i>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill="#3b3b3b"
+                d="m18 21l-4-4h3V7h-3l4-4l4 4h-3v10h3M2 19v-2h10v2M2 13v-2h7v2M2 7V5h4v2H2Z"
+              />
+            </svg>
             <ul class="dropdown-menu">
               <li>
                 <button
@@ -93,15 +105,28 @@ export default function Products() {
       </div>
       <div className="col container">
         <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-4 py-4">
-          {!currentProducts[0]
+          {!currentProducts[0] &&
+          !currentProductsFiltered[0] &&
+          !productsFiltered[0]
             ? "No se encuentran productos disponibles"
-            : productsFiltered[0]
+            : productsFiltered[0] && !currentProductsFiltered[0]
+            ? productsFiltered.map((el, index) => (
+                <Card
+                  image={el.image}
+                  id={el.id}
+                  name={el.name}
+                  price={el.price}
+                  season={el.season}
+                />
+              ))
+            : productsFiltered[0] && currentProductsFiltered[0]
             ? currentProductsFiltered.map((el, index) => (
                 <Card
                   image={el.image}
                   id={el.id}
                   name={el.name}
                   price={el.price}
+                  season={el.season}
                 />
               ))
             : currentProducts.map((el, index) => (
@@ -110,6 +135,7 @@ export default function Products() {
                   id={el.id}
                   name={el.name}
                   price={el.price}
+                  season={el.season}
                 />
               ))}
         </div>

@@ -6,7 +6,8 @@ import ProductCarousel from "./ProductCarousel/ProductCarousel";
 import Brands from "./Brands/Brands";
 import Susbcribe from "./Subscribe/Subscribe";
 import { useDispatch } from "react-redux";
-import { getProducts } from "../../redux/actions";
+import { getProducts } from "../../redux/action/actionsProducts";
+
 
 export default function Home() {
   const dispatch = useDispatch();

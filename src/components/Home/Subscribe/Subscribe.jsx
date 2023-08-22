@@ -3,7 +3,7 @@ import './Subscribe.css'
 
 export default function Susbcribe() {
   return (
-    <div className="container mb-5">
+    <div className="container my-5">
       <h4 className="text-center">Suscribete</h4>
       <p className="text-center">
         <small>
